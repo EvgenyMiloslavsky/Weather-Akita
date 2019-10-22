@@ -3,20 +3,33 @@
          placeholder="City Search"
          aria-label="State"
          [matAutocomplete]="auto"
-         [formControl]="searchCity">
-  <!--         (keydown.enter)="onSelectedCity()"-->
+         [formControl]="searchCity"
+         (keydown.enter)="onSelectCity()">
+<!--         [value]="searchValue" >-->
+  <ng-container class="mat-error" *ngIf=true>
+    <p style="color: red">{{errorMsg}}</p>
+  </ng-container>
 
   <mat-autocomplete #auto="matAutocomplete">
-    <mat-option class="is-loading">Loading...</mat-option>
+    <mat-option class="is-loading" *ngIf="loaders.get$ | async">Loading...</mat-option>
     <ng-container>
-      <mat-option *ngFor="let city of filteredData; index as i" [value]="city.LocalizedName">
+      <mat-option *ngFor="let city of cities; index as i" [value]="city" (click)="onSelectCity()">
 
-        <span><b>{{city.LocalizedName}}</b> </span>
+        <span><b>{{city}}</b> </span>
       </mat-option>
     </ng-container>
   </mat-autocomplete>
 </mat-form-field>
 
-<ng-container *ngIf="errorMsg">
-  {{errorMsg}}
-</ng-container>
+<!--
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>-->

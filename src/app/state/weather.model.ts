@@ -1,14 +1,16 @@
-import { ID } from '@datorama/akita';
+import {ID} from '@datorama/akita';
 
-export interface Weather {
-  id: ID;
-}
+export type Weather = {
+  city: string;
+  cityKey: string;
+};
 
 /**
  * A factory function that creates Weather
  */
-export function createWeather(params: Partial<Weather>) {
+export function createWeather({city, cityKey}: Partial<Weather>) {
   return {
-
+    city,
+    cityKey,
   } as Weather;
 }

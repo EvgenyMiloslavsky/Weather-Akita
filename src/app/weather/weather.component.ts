@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {WeatherState, WeatherStore} from '../state/weather.store';
+import {WeatherQuery} from '../state/weather.query';
+import {Weather} from '../state/weather.model';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherComponent implements OnInit {
 
-  constructor() { }
+  currenetCity$: Observable<Weather>;
+  currentCity: string;
 
-  ngOnInit() {
+  constructor(private weatherStore: WeatherStore,
+              private weatherQuery: WeatherQuery) {
   }
 
+  ngOnInit() {
+    console.log('>>>>', this.weatherQuery.selectAll());
+  }
 }
