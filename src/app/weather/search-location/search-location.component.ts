@@ -20,7 +20,7 @@ export class SearchLocationComponent implements OnInit {
 
   cities$ = this.searchLocationQuery.selectAll();
 
-  searchCity = new FormControl();
+  searchCity = new FormControl('Tel Aviv');
   cities: any[] = [];
   loaders = this.loader.loadersFor('search-location');
   errorMsg$ = this.searchLocationQuery.selectError();
@@ -37,7 +37,7 @@ export class SearchLocationComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.currentCity.emit(this.searchCity.value);
     this.searchCity.valueChanges
       .pipe(
         debounceTime(500),
@@ -75,5 +75,6 @@ export class SearchLocationComponent implements OnInit {
     // this.searchCity.reset(this.searchCity);
     // this.searchLocationService.clearLocation();
   }
+
 }
 

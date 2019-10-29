@@ -22,4 +22,8 @@ export class WeatherComponent implements OnInit {
   ngOnInit() {
     console.log('>>>>', this.weatherQuery.selectAll());
   }
+
+  setCurrentCity(city: string) {
+    this.currentCity = city;
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {WeatherState, WeatherStore} from '../../state/weather.store';
 import {WeatherQuery} from '../../state/weather.query';
 import {WeatherService} from '../../state/weather.service';
@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs';
 })
 
 export class WeatherDetailsComponent implements OnInit, OnDestroy {
-
+@Input() currentCity;
 
   currentCity$ = this.weatherQuery.select('currentCity');
   currentForecast$ = this.weatherQuery.selectAll();

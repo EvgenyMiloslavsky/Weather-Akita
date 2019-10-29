@@ -1,3 +1,5 @@
 <!--<p>weather works!</p>-->
 <app-search-location (currentCity)="setCurrentCity($event)"></app-search-location>
-<app-weather-details></app-weather-details>
+<app-weather-details [currentCity]></app-weather-details>
+
+<p>Current city {{currentCity}}</p>

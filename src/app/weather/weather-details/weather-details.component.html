@@ -1,16 +1,16 @@
-<div class='weather'   fxLayoutAlign="center center">
-<div fxLayout="column" fxLayoutAlign="start center" *ngIf="forecast && forecast[0]">
-  <p>{{city}}</p>
+<div class='weather' fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="start center" *ngIf="forecast && forecast[0]">
+    <p>{{city}}</p>
     <p>{{forecast[0]?.Temperature?.Metric?.Value}}</p>
-  <img *ngIf="forecast[0]"
-       src="https://developer.accuweather.com/sites/default/files/{{forecast[0]?.WeatherIcon  | number:'2.'}}-s.png"
-       alt="">
-  <p>{{forecast[0].WeatherText}}</p>
-</div>
+    <img *ngIf="forecast[0]"
+         src="https://developer.accuweather.com/sites/default/files/{{forecast[0]?.WeatherIcon  | number:'2.'}}-s.png"
+         alt="">
+    <p>{{forecast[0].WeatherText}}</p>
+  </div>
 
-<div *ngIf="(loaders.get$ | async); else idle">
-  <mat-spinner></mat-spinner>
-  <!--</div>-->
+  <div *ngIf="(loaders.get$ | async); else idle">
+    <mat-spinner></mat-spinner>
+    <!--</div>-->
 
-  <ng-template #idle>Idle</ng-template>
-</div>
+    <ng-template #idle>Idle</ng-template>
+  </div>

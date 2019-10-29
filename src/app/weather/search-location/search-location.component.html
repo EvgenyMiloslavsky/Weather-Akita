@@ -4,8 +4,9 @@
          aria-label="State"
          [matAutocomplete]="auto"
          [formControl]="searchCity"
-         (keydown.enter)="onSelectCity()">
-<!--         [value]="searchValue" >-->
+         (keydown.enter)="onSelectCity()"
+         (focusin)=searchCity.reset()>
+  <!--         [value]="searchValue" >-->
   <ng-container class="mat-error" *ngIf=true>
     <p style="color: red">{{errorMsg}}</p>
   </ng-container>
